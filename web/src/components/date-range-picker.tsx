@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import { format, subDays } from "date-fns";
+import { es } from "date-fns/locale";
 import type { DateRange } from "react-day-picker";
 
 import { Button } from "@/components/ui/button";
@@ -22,14 +23,14 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
     return { from, to };
   });
   const dateRange = value ?? internalDateRange;
-  let dateRangeLabel = "Select date";
+  let dateRangeLabel = "Seleccionar fecha";
 
   if (dateRange?.from) {
-    dateRangeLabel = format(dateRange.from, "d MMM yyyy");
+    dateRangeLabel = format(dateRange.from, "d MMM yyyy", { locale: es });
   }
 
   if (dateRange?.from && dateRange.to) {
-    dateRangeLabel = `${format(dateRange.from, "d MMM yyyy")} - ${format(dateRange.to, "d MMM yyyy")}`;
+    dateRangeLabel = `${format(dateRange.from, "d MMM yyyy", { locale: es })} - ${format(dateRange.to, "d MMM yyyy", { locale: es })}`;
   }
 
   const handleDateChange = (nextValue: DateRange | undefined) => {
@@ -53,6 +54,7 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
           selected={dateRange}
           onSelect={handleDateChange}
           numberOfMonths={2}
+          locale={es}
         />
       </PopoverContent>
     </Popover>

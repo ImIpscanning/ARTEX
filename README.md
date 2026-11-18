@@ -1,5 +1,7 @@
 # ARTEX-ymh
 
+> 🇪🇸 [Leer la información en español](README.es.md)
+
 AI 自主渗透测试系统 · 二开版（Go 后端 + Next.js 前端 + PostgreSQL)
 
 > 本项目是 [Autumn-27/ARTEX](https://github.com/Autumn-27/ARTEX) 的二次开发分支，基于上游 v0.3.10，持续吸收上游更新（已跟进至 v0.3.12 并选择性吸收 0.3.11/0.3.12 修复），遵循上游 **AGPL-3.0** 协议（见 `LICENSE`)。

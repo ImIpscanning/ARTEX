@@ -42,11 +42,11 @@ export function ChangePasswordDialog({
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!oldPassword || !newPassword) {
-      toast.error("请填写当前密码和新密码");
+      toast.error("Introduce tu contraseña actual y la nueva");
       return;
     }
     if (newPassword !== confirmPassword) {
-      toast.error("两次输入的新密码不一致");
+      toast.error("Las contraseñas nuevas no coinciden");
       return;
     }
     setSaving(true);
@@ -54,11 +54,11 @@ export function ChangePasswordDialog({
       .changePassword(oldPassword, newPassword)
       .then(() => {
         // 改密会吊销全部已签发凭证(密钥版本 +1),必须重新登录(F6)。
-        toast.success("密码已修改，请重新登录");
+        toast.success("Se cambió la contraseña. Inicia sesión de nuevo.");
         auth.clearToken();
         window.location.href = "/login";
       })
-      .catch((err) => toast.error(`修改失败：${(err as Error).message}`))
+      .catch((err) => toast.error(`No se pudo cambiar la contraseña: ${(err as Error).message}`))
       .finally(() => setSaving(false));
   }
 
@@ -67,14 +67,14 @@ export function ChangePasswordDialog({
       <DialogContent className="sm:max-w-md">
         <form onSubmit={submit}>
           <DialogHeader>
-            <DialogTitle>修改密码</DialogTitle>
+            <DialogTitle>Cambiar contraseña</DialogTitle>
             <DialogDescription>
-              用户名固定为 <b>ARTEX</b>。需先输入当前密码验证；修改成功后所有已签发的登录凭证立即失效，需重新登录。
+              El nombre de usuario es <b>ARTEX</b>. Introduce la contraseña actual para verificar tu identidad. Después del cambio, todas las sesiones dejarán de ser válidas y tendrás que iniciar sesión de nuevo.
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col gap-3 py-4">
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="cp-old">当前密码</Label>
+              <Label htmlFor="cp-old">Contraseña actual</Label>
               <Input
                 id="cp-old"
                 type="password"
@@ -85,7 +85,7 @@ export function ChangePasswordDialog({
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="cp-new">新密码</Label>
+              <Label htmlFor="cp-new">Contraseña nueva</Label>
               <Input
                 id="cp-new"
                 type="password"
@@ -96,7 +96,7 @@ export function ChangePasswordDialog({
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="cp-confirm">确认新密码</Label>
+              <Label htmlFor="cp-confirm">Confirmar contraseña nueva</Label>
               <Input
                 id="cp-confirm"
                 type="password"
@@ -109,10 +109,10 @@ export function ChangePasswordDialog({
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={saving}>
-              取消
+              Cancelar
             </Button>
             <Button type="submit" disabled={saving}>
-              {saving ? "修改中…" : "确认修改"}
+              {saving ? "Cambiando…" : "Confirmar cambio"}
             </Button>
           </DialogFooter>
         </form>

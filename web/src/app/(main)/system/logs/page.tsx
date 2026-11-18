@@ -29,28 +29,28 @@ const MOCK_LOGS: LogLine[] = [
     ts: "2026-07-26T03:56:10Z",
     level: "info",
     tag: "planner",
-    text: "task t-acme-web: 第 3 轮规划，生成意图 i-4",
+    text: "task t-acme-web: tercera ronda de planificación; se creó la intención i-4",
   },
   {
     seq: 4,
     ts: "2026-07-26T03:57:00Z",
     level: "warn",
     tag: "guard",
-    text: "block bash: 目标越界 out.evil.example 不在 scope 内",
+    text: "block bash: el destino out.evil.example está fuera del alcance permitido",
   },
   {
     seq: 5,
     ts: "2026-07-26T03:57:30Z",
     level: "info",
     tag: "work#1",
-    text: "report_finding: Default Credentials (high) 已落库",
+    text: "report_finding: Default Credentials (high) se guardó en la base de datos",
   },
   {
     seq: 6,
     ts: "2026-07-26T03:58:20Z",
     level: "error",
     tag: "work#3",
-    text: "intercept: mysqldump 命中破坏性规则，等待人工审批",
+    text: "intercept: mysqldump activó una regla de seguridad; pendiente de revisión manual",
   },
 ];
 
@@ -203,13 +203,13 @@ export default function LogsPage() {
   return (
     <div className="flex flex-1 flex-col gap-3">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight">系统日志</h1>
-        <p className="text-muted-foreground text-sm">后端实时日志流(planner / worker / 数据库 / 流量 …)</p>
+        <h1 className="text-xl font-semibold tracking-tight">Registros del sistema</h1>
+        <p className="text-muted-foreground text-sm">Registros del servidor en tiempo real (planificador / procesos / base de datos / tráfico…)</p>
       </div>
       <div className="flex flex-1 flex-col gap-3">
         <div className="flex flex-wrap items-center gap-2">
           <Input
-            placeholder="过滤(文本 / tag)…"
+            placeholder="Filtrar por texto o etiqueta…"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             className="h-8 max-w-xs"
@@ -223,7 +223,7 @@ export default function LogsPage() {
                 className="h-8"
                 onClick={() => setLevel(lv)}
               >
-                {lv === "all" ? "全部" : lv}
+                {lv === "all" ? "Todos" : lv}
               </Button>
             ))}
           </div>
@@ -233,14 +233,14 @@ export default function LogsPage() {
             className="h-8"
             onClick={() => setPaused((p) => !p)}
           >
-            {paused ? "已暂停" : "暂停"}
+            {paused ? "En pausa" : "Pausar"}
           </Button>
           <Button size="sm" variant="outline" className="h-8" onClick={() => setLines([])}>
-            清空
+            Limpiar
           </Button>
           <span className="ml-auto text-xs text-muted-foreground">
-            {counts.total} 行 · <span className="text-amber-600 dark:text-amber-400">{counts.warn} 警告</span> ·{" "}
-            <span className="text-red-600 dark:text-red-400">{counts.error} 错误</span>
+            {counts.total} registros · <span className="text-amber-600 dark:text-amber-400">{counts.warn} advertencias</span> ·{" "}
+            <span className="text-red-600 dark:text-red-400">{counts.error} errores</span>
           </span>
         </div>
 
@@ -260,12 +260,12 @@ export default function LogsPage() {
                 disabled={loadingHistory}
                 onClick={loadOlderHistory}
               >
-                {loadingHistory ? "加载中…" : "加载更早日志"}
+                {loadingHistory ? "Cargando…" : "Cargar registros anteriores"}
               </Button>
             </div>
           )}
           {filtered.length === 0 ? (
-            <p className="py-10 text-center text-muted-foreground">暂无日志。</p>
+            <p className="py-10 text-center text-muted-foreground">No hay registros.</p>
           ) : (
             filtered.map((l) => {
               const body =

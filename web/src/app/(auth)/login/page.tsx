@@ -131,7 +131,7 @@ export default function LoginPage() {
                 className="mt-0.5"
               />
               <Label htmlFor="agree-terms" className="text-sm font-normal leading-relaxed text-muted-foreground">
-                He leído y acepto
+                He leído y acepto{" "}
                 <button
                   type="button"
                   onClick={() => setTermsOpen(true)}

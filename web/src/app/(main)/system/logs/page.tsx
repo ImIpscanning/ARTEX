@@ -239,7 +239,7 @@ export default function LogsPage() {
             Limpiar
           </Button>
           <span className="ml-auto text-xs text-muted-foreground">
-            {counts.total} 行 · <span className="text-amber-600 dark:text-amber-400">{counts.warn} advertencias</span> ·{" "}
+            {counts.total} registros · <span className="text-amber-600 dark:text-amber-400">{counts.warn} advertencias</span> ·{" "}
             <span className="text-red-600 dark:text-red-400">{counts.error} errores</span>
           </span>
         </div>

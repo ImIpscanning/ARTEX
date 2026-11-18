@@ -32,7 +32,7 @@ export function NavDocuments({
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Documents</SidebarGroupLabel>
+      <SidebarGroupLabel>Documentos</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
@@ -46,7 +46,7 @@ export function NavDocuments({
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction showOnHover className="rounded-sm data-[state=open]:bg-accent">
                   <Ellipsis />
-                  <span className="sr-only">More</span>
+                  <span className="sr-only">Más</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -56,16 +56,16 @@ export function NavDocuments({
               >
                 <DropdownMenuItem>
                   <Folder />
-                  <span>Open</span>
+                  <span>Abrir</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Forward />
-                  <span>Share</span>
+                  <span>Compartir</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem variant="destructive">
                   <Trash2 />
-                  <span>Delete</span>
+                  <span>Eliminar</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -74,7 +74,7 @@ export function NavDocuments({
         <SidebarMenuItem>
           <SidebarMenuButton className="text-sidebar-foreground/70">
             <Ellipsis className="text-sidebar-foreground/70" />
-            <span>More</span>
+            <span>Más</span>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
